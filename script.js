@@ -31,15 +31,18 @@ function randomFrom(list) {
 function moveNoButton() {
   const area = actions.getBoundingClientRect();
   const button = noButton.getBoundingClientRect();
-  const maxX = area.width - button.width;
-  const maxY = area.height - button.height;
+  
+  // Calculate available space for movement
+  const maxX = area.width - button.width - 20; // 20px margin from edges
+  const maxY = area.height - button.height - 20; // 20px margin from edges
   
   if (maxX <= 0 || maxY <= 0) {
     return;
   }
 
-  const nextX = Math.random() * maxX;
-  const nextY = Math.random() * maxY;
+  // Generate random position ensuring it stays within bounds
+  const nextX = 10 + Math.random() * maxX; // 10px minimum margin
+  const nextY = 10 + Math.random() * maxY; // 10px minimum margin
 
   while(true){
     let nextImg = randomFrom(noImg);
@@ -49,12 +52,16 @@ function moveNoButton() {
     }
   }
 
-  noButton.style.transform = `translate(${nextX}px, ${nextY}px)`;
+  // Apply the position (not using transform, direct positioning)
+  noButton.style.left = `${nextX}px`;
+  noButton.style.top = `${nextY}px`;
   note.textContent = randomFrom(playfulNoMessages);
 }
 
 function resetNoButton() {
-  noButton.style.transform = "translate(0, 0)";
+  noButton.style.left = "50%";
+  noButton.style.top = "50%";
+  noButton.style.transform = "translate(50%, -50%)";
 }
 
 yesButton.addEventListener("click", () => {
