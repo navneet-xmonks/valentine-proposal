@@ -38,8 +38,8 @@ function moveNoButton() {
     return;
   }
 
-  const nextX = (Math.random() * maxX) + button.width / 2;
-  const nextY = (Math.random() * maxY) + button.height / 2;
+  const nextX = Math.random() * maxX;
+  const nextY = Math.random() * maxY;
 
   while(true){
     let nextImg = randomFrom(noImg);
