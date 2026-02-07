@@ -11,6 +11,48 @@
 body {
   margin: 0;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Floating hearts animation */
+body::before,
+body::after {
+  content: "💖";
+  position: fixed;
+  font-size: 2rem;
+  animation: float 15s infinite ease-in-out;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body::before {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+body::after {
+  content: "💕";
+  right: 10%;
+  animation-delay: 7s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 .page {
@@ -21,34 +63,100 @@ body {
   justify-content: center;
   padding: 24px;
   gap: 24px;
+  position: relative;
+  z-index: 2;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 28px;
-  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 32px;
+  padding: 40px 36px;
   text-align: center;
-  max-width: 520px;
-  box-shadow: 0 20px 50px rgba(118, 17, 73, 0.15);
-  border: 1px solid rgba(255, 190, 221, 0.8);
+  max-width: 540px;
+  box-shadow: 0 25px 60px rgba(255, 90, 165, 0.25), 
+              0 10px 30px rgba(118, 17, 73, 0.15);
+  border: 2px solid rgba(255, 190, 221, 0.9);
+  position: relative;
+  animation: cardEntrance 0.6s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card::before {
+  content: "✨";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 2rem;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+.card::after {
+  content: "✨";
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 2rem;
+  animation: sparkle 2s infinite ease-in-out 1s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3) rotate(20deg);
+    opacity: 1;
+  }
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  color: #aa3167;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #d4006e;
+  font-weight: 600;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  margin: 8px 0 20px;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  margin: 8px 0 24px;
+  background: linear-gradient(135deg, #ff0080, #ff5aa5, #ff8bd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeIn 0.8s ease-out 0.4s both;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .gifs {
   display: flex;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   height: 18em;
   flex-direction: row;
   align-items: center;
@@ -57,54 +165,100 @@ h1 {
 
 .gifs img {
   width: 60%;
-  border-radius: 18px;
+  border-radius: 20px;
   object-fit: cover;
-  border: 2px solid #ffd3e8;
+  border: 3px solid #ffd3e8;
   height: auto;
+  box-shadow: 0 15px 35px rgba(255, 90, 165, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease-out 0.6s both;
+}
+
+.gifs img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 45px rgba(255, 90, 165, 0.4);
 }
 
 .note {
-  font-size: 1rem;
-  margin: 8px 0 18px;
+  font-size: 1.05rem;
+  margin: 12px 0 20px;
+  font-weight: 500;
+  color: #c2186b;
+  animation: fadeIn 0.8s ease-out 0.8s both;
 }
 
 .actions {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
   padding: 50px;
 }
 
 .btn {
   border: none;
-  padding: 12px 22px;
+  padding: 14px 28px;
   border-radius: 999px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-out 1s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-yes {
-  background: linear-gradient(135deg, #ff5aa5, #ff8bd1);
+  background: linear-gradient(135deg, #ff0080, #ff5aa5, #ff8bd1);
   color: white;
-  box-shadow: 0 10px 20px rgba(255, 90, 165, 0.35);
+  box-shadow: 0 12px 25px rgba(255, 90, 165, 0.4),
+              0 4px 10px rgba(255, 0, 128, 0.3);
+}
+
+.btn-yes:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 90, 165, 0.5),
+              0 6px 15px rgba(255, 0, 128, 0.4);
 }
 
 .btn-no {
-  background: #fff0f6;
-  color: #aa3167;
+  background: linear-gradient(135deg, #fff0f6, #ffe4f0);
+  color: #d4006e;
   border: 2px dashed #ffb7d9;
+  box-shadow: 0 8px 20px rgba(255, 183, 217, 0.3);
 }
 
-.btn:hover {
-  transform: translateY(-2px) scale(1.02);
+.btn-no:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 183, 217, 0.4);
+  border-color: #ff8bd1;
 }
 
 .footer {
-  font-size: 0.9rem;
-  color: #aa3167;
+  font-size: 1rem;
+  color: #d4006e;
+  font-weight: 500;
+  animation: fadeIn 0.8s ease-out 1.2s both;
+  text-shadow: 0 2px 4px rgba(255, 90, 165, 0.2);
 }
 
 @media (max-width: 600px) {

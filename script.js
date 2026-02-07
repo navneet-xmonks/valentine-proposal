@@ -4,17 +4,17 @@ const note = document.getElementById("note");
 const actions = document.querySelector(".actions");
 
 const sweetMessages = [
-  "Yay! I can't wait for our date 💖",
-  "Best. Valentine. Ever! 💘",
-  "You just made my whole day! 🥰",
-  "Forever my favorite person 💕",
+  "🎉 Yay! I can't wait for our date 💖✨",
+  "🌟 Best. Valentine. Ever! 💘🎊",
+  "😍 You just made my whole day! 🥰💕",
+  "💫 Forever my favorite person 💕🌹",
 ];
 
 const playfulNoMessages = [
-  "Nope! Catch me if you can 😜",
-  "No button escaped!",
-  "Try again, cutie!",
-  "Too slow, love!",
+  "😜 Nope! Catch me if you can 🏃‍♂️💨",
+  "🎯 No button escaped! Try again 😉",
+  "💖 Try again, cutie! 🌟",
+  "🎪 Too slow, love! 😘✨",
 ];
 
 const noImg = [ "noimg0", "noimg1", "noimg2", "noimg3" ];
@@ -59,7 +59,7 @@ function resetNoButton() {
 
 yesButton.addEventListener("click", () => {
   note.textContent = randomFrom(sweetMessages);
-  yesButton.textContent = "Yes!!! 💞";
+  yesButton.textContent = "💝 Yes!!! 💞✨";
   resetNoButton();
   showImage(yesImg);
 });
