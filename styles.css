@@ -236,14 +236,15 @@ h1 {
   box-shadow: 0 12px 25px rgba(255, 90, 165, 0.4),
               0 4px 10px rgba(255, 0, 128, 0.3);
   position: absolute;
-  left: 50%;
+  right: 50%;
   top: 50%;
-  transform: translate(-150%, -50%);
+  margin-right: 8px;
+  transform: translateY(-50%);
   z-index: 10;
 }
 
 .btn-yes:hover {
-  transform: translate(-150%, -50%) translateY(-3px) scale(1.05);
+  transform: translateY(-50%) translateY(-3px) scale(1.05);
   box-shadow: 0 15px 35px rgba(255, 90, 165, 0.5),
               0 6px 15px rgba(255, 0, 128, 0.4);
 }
@@ -257,7 +258,8 @@ h1 {
   transition: left 0.3s ease, top 0.3s ease;
   left: 50%;
   top: 50%;
-  transform: translate(50%, -50%);
+  margin-left: 8px;
+  transform: translateY(-50%);
   z-index: 5;
 }
 

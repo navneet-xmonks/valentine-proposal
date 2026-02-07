@@ -61,7 +61,8 @@ function moveNoButton() {
 function resetNoButton() {
   noButton.style.left = "50%";
   noButton.style.top = "50%";
-  noButton.style.transform = "translate(50%, -50%)";
+  noButton.style.marginLeft = "8px";
+  noButton.style.transform = "translateY(-50%)";
 }
 
 yesButton.addEventListener("click", () => {
