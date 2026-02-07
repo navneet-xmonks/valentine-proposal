@@ -55,7 +55,6 @@ function moveNoButton() {
   // Apply the position (not using transform, direct positioning)
   noButton.style.left = `${nextX}px`;
   noButton.style.top = `${nextY}px`;
-  noButton.style.transform = "none";
   note.textContent = randomFrom(playfulNoMessages);
 }
 
